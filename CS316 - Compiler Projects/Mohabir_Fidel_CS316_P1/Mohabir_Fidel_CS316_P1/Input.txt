@@ -1,0 +1,9 @@
+(define (exist x list)
+  (cond ((equal list ()) #F)
+        ((equal x (car list)) #T)
+        (else (exist x (cdr list)))))
+
+(define find-test-1
+  (find 'a2 '((a1 . b1) (a2 . b2) (a3 . b3))))
+(define find-test-2
+  (find 'a4 '((a1 . b1) (a2 . b2) (a3 . b3))))

@@ -1,0 +1,3 @@
+Open compiler class.
+Set Arguments under run config
+Run program with inputs.
