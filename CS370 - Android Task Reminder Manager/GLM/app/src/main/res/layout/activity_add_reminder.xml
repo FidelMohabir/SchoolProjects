@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddReminder">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type:"
+                android:textSize="18sp"
+                android:layout_marginTop="50dp">
+            </TextView>
+            <Button
+                android:id="@+id/btnAddType"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:fontFamily="sans-serif"
+                android:text="Add Type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textSize="10sp"
+                tools:layout_editor_absoluteX="13dp"
+                tools:layout_editor_absoluteY="109dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+        <Spinner
+            android:id="@+id/dropdownType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </Spinner>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name:"
+                android:textSize="18sp"
+                android:layout_marginTop="25dp">
+            </TextView>
+            <Button
+                android:id="@+id/btnAddSubType"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:fontFamily="sans-serif"
+                android:text="Add Sub Type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textSize="10sp"
+                tools:layout_editor_absoluteX="13dp"
+                tools:layout_editor_absoluteY="109dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+        <Spinner
+            android:id="@+id/dropdownName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Spinner>
+
+        <Button
+            android:id="@+id/btnAddAlert"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:fontFamily="sans-serif"
+            android:text="Add Alert"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textSize="12sp"
+            tools:layout_editor_absoluteX="13dp"
+            tools:layout_editor_absoluteY="109dp"
+            android:layout_marginTop="50dp"/>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:fontFamily="sans-serif"
+            android:text="Save Reminder"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginTop="50dp"/>
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:fontFamily="sans-serif"
+            android:text="Cancel"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

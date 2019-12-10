@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GLM</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_activity_master_list">MasterList</string>
+    <string name="title_activity_reminder_list">reminderListActivity</string>
+    <string name="title_activity_adding_new_reminder">AddingNewReminder</string>
+</resources>
