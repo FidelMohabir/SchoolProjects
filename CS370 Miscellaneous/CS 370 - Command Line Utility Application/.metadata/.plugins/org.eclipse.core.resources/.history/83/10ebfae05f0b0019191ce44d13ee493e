@@ -1,0 +1,252 @@
+package edu.qc.seclass.replace;
+
+import java.awt.*;
+import java.io.*;
+import java.lang.reflect.Array;
+import java.util.*;
+
+
+public class Main {
+	
+	public static int bParameter = 0;
+	public static boolean fParameter = false;
+	public static boolean lParameter = false;
+	public static boolean iParameter = false;
+	public static int argsArrayPos = 0;
+	public static ArrayList<String> from = new Arraylist<>();
+	public static ArrayList<String> to = new Arraylist<>();
+	public static ArrayList<String> textFromFile = new ArrayList<>();
+	public static Scanner file;
+	
+    public static void main(String[] args) {
+        // TODO: Empty skeleton method
+    	boolean errMessage = false;
+    	
+    	if (args.length < 4) {
+    		usage();
+    		errMessage = true;
+    	}
+    	
+    	else if (args[argsArrayPos].contentEquals(" ") || args[argsArrayPos].contentEquals("") {
+    		usage();
+    		errMessage = true;
+    	}
+    	
+    	if (!errMessage) { //parameters
+    		while ((args[argsArrayPos].charAt(0)== "-")) {
+    			if (args[argsArrayPos].charAt(1) == 'b' && args[argsArrayPos].length() == 2 ) 
+    				bParameter = 1;
+    			else if (args[argsArrayPos].charAt(1) == 'f' && args[argsArrayPos].length() == 2 )
+    				fParameter = true;
+    			else if (args[argsArrayPos].charAt(1) == 'l' && args[argsArrayPos].length() == 2 )
+    				lParameter = true;
+    			else if (args[argsArrayPos].charAt(1) == 'i' && args[argsArrayPos].length() == 2 )
+    				iParameter = true;
+    			else {
+    				errMessage = true;
+    				usage();
+    				break;
+    			}
+    			argsArrayPos++;
+    			if (args[argsArrayPos].equals(" ") || args[argsArrayPos].equals("") || argsArrayPos > args.length()) {
+    				errMessage = true;
+    				usage();
+    				break;
+    			}	
+    		}
+    		
+    		
+    	if (1errMessage) { //from
+    		from.add(args[argsArrayPos]);
+    		argsArrayPos++;
+    		if (args[argsArrayPos].equals(" ") || args[argsArrayPos].equals("") || argsArrayPos > args.length()) {
+				errMessage = true;
+				usage();
+    		}
+    	}
+    	
+    	if (1errMessage) { //to
+    		to.add(args[argsArrayPos]);
+    		argsArrayPos++;
+    		if (args[argsArrayPos].equals(" ") || args[argsArrayPos].equals("") || argsArrayPos > args.length()) {
+				errMessage = true;
+				usage();
+    		}
+    	}
+    	
+    	if (!errMessage) { //--
+    		if (args[argsArrayPos].equals("--")) {
+    			argsArrayPos++;
+        		if (args[argsArrayPos].equals(" ") || args[argsArrayPos].equals("") || argsArrayPos > args.length()) {
+    				errMessage = true;
+    				usage();
+        		}
+    		}
+    		else {
+    			errMessage = true;
+    			usage();
+    		}
+    	}
+    	
+    	if (!errMessage) { //text file
+    		if (args[argsArrayPos].charAt(args[argsArrayPos]-1)=="t" &&
+    				args[argsArrayPos].charAt(args[argsArrayPos]-2)=="x" &&
+    				args[argsArrayPos].charAt(args[argsArrayPos]-3)=="t"
+    				args[argsArrayPos].charAt(args[argsArrayPos]-1)==".") {
+    			errMessage = true;
+    			usage();
+    		}
+    		else
+    			
+   				try {
+    				file = new Scanner(new File(args[argsArrayPos]));
+    				while (file.hasNext()) {
+    				textFromFile.add(file.nextline());
+    				textFromFile.add(System.getProperty("line.seperator"));
+    				}
+    			}
+    			catch (FileNotFoundException f) {
+    				System.err.println("File not found");
+    			}
+    	}
+    	if (bParameter>0) 
+    		backup();
+    	if (fParameter)
+    		replaceFirst();
+    	
+    	if (lParameter)
+    		replaceLast();
+    	if (!fParameter && !lParameter)
+    		replaceAll();	
+    		
+    }
+    	
+    private static void replaceFirst() {
+    	boolean checked = false;
+    	if (iParameter) { //i is true
+    		for (int i = 0; i < textFromFile.size(); i++) {
+    			String array[] = textFromFile.get(i).split(" ");
+    			for (int j = 0; j < array[].length; j++) {
+    				if (!checked) {
+    					array[j].replaceAll("(?i)"+ from.get(0), to.get(0));
+    					checked = true;
+    				}
+    			}
+    		}
+    	}
+    	else { //i is false
+    		for (int i = 0; i < textFromFile.size(); i++) {
+    			String array[] = textFromFile.get(i).split(" ");
+    			for (int j = 0; j < array[].length; j++) {
+    				if (!checked) {
+    					array[j].replaceAll(from.get(0), to.get(0));
+    					checked = true;
+    				}
+    			}
+    		}
+    	}
+    	
+    	String temp = "";
+    	for (int i = 0; i < array.length; i++) {
+    		if (array[i].equals(System.getProperty("line.seperator"))))
+    			temp = temp + array[i];
+    		else if (i==array.length-1)
+    			temp = temp + array[i] + " ";
+    		else
+    			temp = temp + array[i];
+    	}
+    	
+    	textFromFile.set(0, temp);
+    }
+    
+    private static void replaceLast() {
+    	boolean checked = false;
+    	if (iParameter) { //i is true
+    		for (int i = 0; i < textFromFile.size(); i++) {
+    			String array[] = textFromFile.get(i).split(" ");
+    			for (int j = array[].length-1; j>=0; j--) {
+    				if (!checked) {
+    					array[j].replaceAll("(?i)"+ from.get(0), to.get(0));
+    					checked = true;
+    				}
+    			}
+    		}
+    	}
+    	else { //i is false
+    		for (int i = 0; i < textFromFile.size(); i++) {
+    			String array[] = textFromFile.get(i).split(" ");
+    			for (int j = array[].length-1; j>=0; j--) {
+    				if (!checked) {
+    					array[j].replaceAll(from.get(0), to.get(0));
+    					checked = true;
+    				}
+    			}
+    		}
+    	}
+    	
+    	String temp = "";
+    	for (int i = 0; i < array.length; i++) {
+    		if (array[i].equals(System.getProperty("line.seperator"))))
+    			temp = temp + array[i];
+    		else if (i==array.length-1)
+    			temp = temp + array[i] + " ";
+    		else
+    			temp = temp + array[i];
+    	}
+    	
+    	textFromFile.set(0, temp);
+    }
+    
+    publice static void replaceAll() {
+    	if (iParameter) { //i is true
+    		for (int i = 0; i < textFromFile.size(); i++) {
+    			String array[] = textFromFile.get(i).split(" ");
+    			for (int j = array[].length-1; j>=0; j--) {
+    					array[j].replaceAll("(?i)"+ from.get(0), to.get(0));
+    					checked = true;
+    			}
+    		}
+    	}
+    	else { //i is false
+    		for (int i = 0; i < textFromFile.size(); i++) {
+    			String array[] = textFromFile.get(i).split(" ");
+    			for (int j = array[].length-1; j>=0; j--) {
+    					array[j].replaceAll(from.get(0), to.get(0));
+    					checked = true;
+    			}
+    		}
+    	}
+    	
+    	String temp = "";
+    	for (int i = 0; i < array.length; i++) {
+    		if (array[i].equals(System.getProperty("line.seperator"))))
+    			temp = temp + array[i];
+    		else if (i==array.length-1)
+    			temp = temp + array[i] + " ";
+    		else
+    			temp = temp + array[i];
+    	}
+    	
+    	textFromFile.set(0, temp);
+    }
+
+    private static backup() {
+    	try {
+    		PrintWriter writer = new PrintWriter (args[argsArrayPos] + ".bck")
+    		for (int i = 0; i < textFromFile.size() -1; i++) {
+    			writer.print(textFromFile.get(i));
+    		}
+    	}
+    	catch (FileNotFoundException f) {
+    		f.printStackTrace();
+    	}
+    	writer.close();
+    	bParameter++;
+    	textFromFile.clear();
+    }
+    
+    private static void usage() {
+        System.err.println("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- " + "<filename> [<filename>]*" );
+    }
+
+}
